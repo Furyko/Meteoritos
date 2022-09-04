@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "RayoLaser",
 "language": "GDScript",
 "path": "res://Juego/Proyectiles/Laser/LaserBeam2D.gd"
+}, {
+"base": "Line2D",
+"class": "Trail2D",
+"language": "GDScript",
+"path": "res://Juego/Naves/PLayer/Estela/Trail2D.gd"
 } ]
 _global_script_class_icons={
 "Canion": "",
 "Player": "",
 "Proyectil": "",
-"RayoLaser": ""
+"RayoLaser": "",
+"Trail2D": ""
 }
 
 [application]
