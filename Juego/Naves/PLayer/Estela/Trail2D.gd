@@ -4,7 +4,7 @@
 # texture, or trail width, use parameters from the `Line2D` class.
 tool
 
-class_name Trail2D
+class_name Estela
 extends Line2D
 
 export var is_emitting := false setget set_emitting
@@ -14,7 +14,7 @@ export var resolution := 5.0
 # Life of each point in seconds before it is deleted.
 export var lifetime := 0.5
 # Maximum number of points allowed on the curve.
-export var max_points := 100
+export var max_points := 100 setget set_max_points
 
 # Optional path to the target node to follow. If not set, the instance follows its parent.
 export var target_path: NodePath
@@ -25,7 +25,6 @@ var _clock := 0.0
 var _offset := 0.0
 
 onready var target: Node2D = get_node_or_null(target_path)
-
 
 func _ready() -> void:
 	if not target:
@@ -95,6 +94,9 @@ func remove_older() -> void:
 		else:
 			break
 
+## Setters and Getters
+func set_max_points(new_points: int) -> void:
+	max_points = new_points
 
 func set_emitting(emitting: bool) -> void:
 	is_emitting = emitting
