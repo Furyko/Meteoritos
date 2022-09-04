@@ -66,8 +66,8 @@ func controlador_estados(nuevo_estado: int) -> void:
 		ESTADO.MUERTO:
 			colisionador.set_deferred("disabled", true)
 			canion.set_puede_disparar(true)
+			Eventos.emit_signal("nave_destruida", global_position)
 			queue_free()
-			printerr("Error de estado")
 	estado_actual = nuevo_estado
 
 func esta_input_activo() -> bool:
@@ -98,6 +98,8 @@ func player_input() -> void:
 	if Input.is_action_just_released("disparo_principal"):
 		canion.set_esta_disparando(false)
 
+func destruir() -> void:
+	controlador_estados(ESTADO.MUERTO)
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "spawn":
