@@ -66,7 +66,7 @@ func controlador_estados(nuevo_estado: int) -> void:
 		ESTADO.MUERTO:
 			colisionador.set_deferred("disabled", true)
 			canion.set_puede_disparar(true)
-			Eventos.emit_signal("nave_destruida", global_position)
+			Eventos.emit_signal("nave_destruida", global_position, 3)
 			queue_free()
 	estado_actual = nuevo_estado
 
