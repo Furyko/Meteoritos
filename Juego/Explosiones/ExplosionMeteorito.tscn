@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Juego/Explosiones/ExplosionMeteorito/meteorito_pequenio_1.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Explosiones/ExplosionMeteorito/meteorito_pequenio_2.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Juego/Explosiones/ExplosionMeteorito/meteorito_diminuto_1.png" type="Texture" id=5]
 [ext_resource path="res://Juego/Explosiones/ExplosionMeteorito/meteorito_mediano_1.png" type="Texture" id=6]
 [ext_resource path="res://Juego/Explosiones/ExplosionMeteorito/ExplosionMeteorito.gd" type="Script" id=7]
+[ext_resource path="res://Juego/Explosiones/ExplosionMeteorito/meteorito_explosion.ogg" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -676,7 +677,8 @@ anims/RESET = SubResource( 1 )
 anims/default = SubResource( 2 )
 anims/explosion = SubResource( 3 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="DestroySFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
 
 [node name="SpriteDiminuto1" type="Sprite" parent="."]
 texture = ExtResource( 5 )
