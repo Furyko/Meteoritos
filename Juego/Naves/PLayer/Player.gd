@@ -51,7 +51,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		escudo.activar()
 	
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
-	#print(empuje.rotated(rotation))
 	apply_central_impulse(empuje.rotated(rotation))
 	apply_torque_impulse(dir_rotacion * potencia_rotacion)
 

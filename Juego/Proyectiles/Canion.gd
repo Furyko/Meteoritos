@@ -30,7 +30,6 @@ func _ready() -> void:
 	timer_enfriamiento.wait_time = cadencia_disparo
 	
 func _process(_delta: float) -> void:
-	#print(timer_enfriamiento.time_left)
 	if esta_disparando and esta_enfriado:
 		disparar()
 

@@ -23,6 +23,10 @@ func destruir() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
 	Eventos.emit_signal("meteorito_destruido", global_position)
 	queue_free()
+	
+func aleatorizar_velocidad() -> float:
+	randomize()
+	return rand_range(1.1, 1.4)
 
 ## Methods
 func _ready() -> void:
@@ -37,8 +41,7 @@ func crear(pos: Vector2, dir: Vector2, tamanio: float) -> void:
 	var forma_colision:CircleShape2D = CircleShape2D.new()
 	forma_colision.radius = radio
 	$CollisionShape2D.shape = forma_colision
-	linear_velocity = vel_lineal_base * dir / tamanio
-	angular_velocity = vel_ang_base / tamanio
+	linear_velocity = (vel_lineal_base * dir / tamanio) * aleatorizar_velocidad()
+	angular_velocity = (vel_ang_base / tamanio) * aleatorizar_velocidad()
 	hitpoints = hitpoints_base * tamanio
-	print("hitpoints", hitpoints)
 

@@ -10,7 +10,6 @@ func _on_Area2D_body_entered(body: Node) -> void:
 
 func recibir_danio(danio: float) -> void:
 	hitpoints -= danio
-	print(danio)
 	if hitpoints <= 0.0:
 		queue_free()
 
