@@ -18,7 +18,6 @@ func _physics_process(delta: float) -> void:
 func daniar(otro_cuerpo: CollisionObject2D) -> void:
 	if otro_cuerpo.has_method("recibir_danio"):
 		otro_cuerpo.recibir_danio(danio)
-	print(otro_cuerpo.owner.name)
 	queue_free()
 
 
