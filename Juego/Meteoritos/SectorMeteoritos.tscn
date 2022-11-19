@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Juego/Meteoritos/MeteoritoSpawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.gd" type="Script" id=2]
+
+[node name="SectorMeteoritos" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="BordesNavePlayer" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BordesNavePlayer"]
+modulate = Color( 0, 0.690196, 1, 1 )
+self_modulate = Color( 0, 0.92549, 1, 1 )
+position = Vector2( -972, -58 )
+constant_linear_velocity = Vector2( 2, 2 )
+
+[node name="DetectorFueraZona" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="DetectorFueraZona"]
+
+[node name="Area2D2" type="Area2D" parent="DetectorFueraZona"]
+
+[node name="Area2D3" type="Area2D" parent="DetectorFueraZona"]
+
+[node name="Area2D4" type="Area2D" parent="DetectorFueraZona"]
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="MeteoritoSpawner3" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( 450, -712 )
+direccion = Vector2( -1, 1 )
+
+[node name="MeteoritoSpawner" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( -346, -708 )
+
+[node name="MeteoritoSpawner2" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( -63, 645 )
+direccion = Vector2( 1, -1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
