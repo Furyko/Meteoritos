@@ -37,3 +37,5 @@ tipo_peligro = "Meteorito"
 [node name="CamaraNivel" type="Camera2D" parent="."]
 
 [node name="TweenCamera" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="TweenCamera" to="." method="_on_TweenCamera_tween_completed"]

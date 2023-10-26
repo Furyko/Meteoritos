@@ -50,16 +50,17 @@ func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int) -> void
 	transicion_camaras(
 		$Player/CamaraPlayer.global_position,
 		camara_nivel.global_position,
-		camara_nivel
+		camara_nivel,
+		tiempo_transicion_camara
 	)
 	
-func transicion_camaras(desde:Vector2, hasta:Vector2, camara_actual:Camera2D) -> void:
+func transicion_camaras(desde:Vector2, hasta:Vector2, camara_actual:Camera2D, tiempo_transicion:float) -> void:
 	$TweenCamera.interpolate_property(
 		camara_actual,
 		"global_position",
 		desde,
 		hasta,
-		tiempo_transicion_camara,
+		tiempo_transicion,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN_OUT
 	)
@@ -74,7 +75,8 @@ func controlar_meteoritos_restantes() -> void:
 		transicion_camaras(
 			camara_nivel.global_position,
 			$Player/CamaraPlayer.global_position,
-			$Player/CamaraPlayer
+			$Player/CamaraPlayer,
+			tiempo_transicion_camara * 0.10
 		)
 		
 ## External signals conection
@@ -110,3 +112,8 @@ func _on_meteorito_destruido(pos: Vector2) -> void:
 	add_child(new_explosion)
 	
 	controlar_meteoritos_restantes()
+
+
+func _on_TweenCamera_tween_completed(object: Object, _key: NodePath) -> void:
+	if object.name == "CamaraPlayer":
+		object.global_position = $Player.global_position
