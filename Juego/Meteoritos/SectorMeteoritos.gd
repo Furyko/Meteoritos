@@ -30,7 +30,6 @@ func spawner_aleatorio() -> int:
 	
 func conectar_seniales_detectores() -> void:
 	for detector in $DetectorFueraZona.get_children():
-		print(detector)
 		detector.connect("body_entered", self, "_on_detector_body_entered")
 
 ## Intern Signals
@@ -44,5 +43,4 @@ func _on_SpawnTimer_timeout():
 	#	spawner.spawnear_meteorito()
 	
 func _on_detector_body_entered(body: Node) -> void:
-	print(body.name)
 	body.set_esta_en_sector(false)

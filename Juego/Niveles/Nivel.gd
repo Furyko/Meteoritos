@@ -72,7 +72,6 @@ func transicion_camaras(desde:Vector2, hasta:Vector2, camara_actual:Camera2D, ti
 	
 func controlar_meteoritos_restantes() -> void:
 	meteoritos_totales -= 1
-	print(meteoritos_totales)
 	if meteoritos_totales == 0:
 		contenedor_sector_meteoritos.get_child(0).queue_free()
 		camara_jugador.set_puede_hacer_zoom(true)
@@ -98,7 +97,6 @@ func _on_nave_destruida(posicion: Vector2, num_explosiones: int) -> void:
 		yield(get_tree().create_timer(0.6),"timeout")
 	
 func _on_nave_en_sector_peligro(centro_cam:Vector2, tipo_peligro:String, num_peligros:int) -> void:
-	print("Señal recibida. Tipo de peligro: ", tipo_peligro)
 	if tipo_peligro == "Meteorito":
 		crear_sector_meteoritos(centro_cam, num_peligros)
 	elif tipo_peligro == "Enemigo":
