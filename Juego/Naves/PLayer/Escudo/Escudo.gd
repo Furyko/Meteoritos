@@ -54,4 +54,5 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		set_process(true)
 
 func _on_Escudo_body_entered(body: Node) -> void:
+	print("entró", body.name)
 	body.queue_free()

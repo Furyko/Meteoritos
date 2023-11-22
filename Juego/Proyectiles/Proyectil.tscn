@@ -9,6 +9,7 @@ height = 32.9144
 
 [node name="Proyectil" type="Area2D"]
 z_as_relative = false
+collision_layer = 8
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
