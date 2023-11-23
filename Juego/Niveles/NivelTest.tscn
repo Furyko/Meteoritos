@@ -19,6 +19,25 @@ explosion = ExtResource( 4 )
 meteorito = ExtResource( 6 )
 explosion_meteorito = ExtResource( 7 )
 sector_meteoritos = ExtResource( 9 )
+enemigo_interceptor = ExtResource( 12 )
+
+[node name="TriggersLluviaMeteoritos" type="Node" parent="."]
+
+[node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" instance=ExtResource( 5 )]
+position = Vector2( 1454, 526 )
+tipo_peligro = "Meteorito"
+
+[node name="ContenedorEstaciones" type="Node" parent="."]
+
+[node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 11 )]
+position = Vector2( 197, 526 )
+
+[node name="TriggersInterceptores" type="Node" parent="."]
+
+[node name="SectorDePeligro" parent="TriggersInterceptores" instance=ExtResource( 5 )]
+position = Vector2( 962, 1479 )
+tipo_peligro = "Enemigo"
+numero_peligros = 2
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 953, 522 )
@@ -32,23 +51,12 @@ position = Vector2( 960, 540 )
 scale = Vector2( 7.5, 4.21875 )
 texture = ExtResource( 8 )
 
-[node name="TriggersLluviaMeteoritos" type="Node" parent="."]
-
-[node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" instance=ExtResource( 5 )]
-position = Vector2( 1454, 526 )
-tipo_peligro = "Meteorito"
-
 [node name="CamaraNivel" type="Camera2D" parent="."]
 script = ExtResource( 10 )
 
 [node name="TweenZoom" type="Tween" parent="CamaraNivel"]
 
 [node name="TweenCamera" type="Tween" parent="."]
-
-[node name="ContenedorEstaciones" type="Node" parent="."]
-
-[node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 11 )]
-position = Vector2( 197, 526 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_ignore_camera_zoom = true
@@ -114,8 +122,5 @@ texture = ExtResource( 8 )
 
 [node name="Sprite15" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource( 8 )
-
-[node name="EnemigoInterceptor" parent="." instance=ExtResource( 12 )]
-position = Vector2( 905, 223 )
 
 [connection signal="tween_completed" from="TweenCamera" to="." method="_on_TweenCamera_tween_completed"]

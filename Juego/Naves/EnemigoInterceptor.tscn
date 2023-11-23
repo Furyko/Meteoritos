@@ -82,12 +82,13 @@ radius = 646.094
 
 [node name="EnemigoInterceptor" instance=ExtResource( 1 )]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 15
 physics_material_override = ExtResource( 6 )
 contacts_reported = 2
 contact_monitor = true
 script = ExtResource( 4 )
 explotions_amount = 1
+potencia_max = 800.0
 
 [node name="Sprite" parent="." index="0"]
 rotation = -1.5708
