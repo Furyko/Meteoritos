@@ -44,16 +44,11 @@ func _on_AreaColision_body_entered(body:Node) -> void:
 	if body.has_method("destruir"):
 		body.destruir()
 
-
 func _on_AreaRecarga_body_entered(body:Node) -> void:
 	if body is Player:
 		nave_player = body
 		player_en_zona = true
-		
-	body.set_gravity_scale(0.1)
-
 
 func _on_AreaRecarga_body_exited(body:Node) -> void:
 	if body is Player:
 		player_en_zona = false
-	body.set_gravity_scale(0.0)
