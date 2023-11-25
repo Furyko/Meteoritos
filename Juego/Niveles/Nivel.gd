@@ -30,6 +30,7 @@ func _ready() -> void:
 	player = DatosJuego.get_player_actual()
 	numero_bases_enemigas = contabilizar_bases_enemigas()
 	player = DatosJuego.get_player_actual()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 ## Metodos Custom
 func conectar_seniales() -> void:
