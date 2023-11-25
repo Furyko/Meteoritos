@@ -25,6 +25,7 @@ var numero_bases_enemigas = 0
 
 ## Metodos
 func _ready() -> void:
+	Eventos.emit_signal("nivel_iniciado")
 	conectar_seniales()
 	crear_contenedores()
 	player = DatosJuego.get_player_actual()
@@ -140,7 +141,7 @@ func _on_nave_destruida(nave: Player, posicion: Vector2, num_explosiones: int) -
 			camara_nivel,
 			tiempo_transicion_camara
 		)
-		
+		$RestartTimer.start()
 	crear_explosion(posicion, num_explosiones, 0.6, Vector2(100.0, 50.0))
 	
 	for i in range(num_explosiones):
@@ -203,3 +204,9 @@ func crear_explosion(
 func _on_TweenCamera_tween_completed(object: Object, _key: NodePath) -> void:
 	if object.name == "CamaraPlayer":
 		object.global_position = $Player.global_position
+
+
+func _on_RestartTimer_timeout() -> void:
+	Eventos.emit_signal("nivel_terminado")
+	yield(get_tree().create_timer(1.0), "timeout")
+	get_tree().reload_current_scene()
