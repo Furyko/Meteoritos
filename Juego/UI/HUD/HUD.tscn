@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Juego/Naves/PLayer/player_orange.png" type="Texture" id=1]
 [ext_resource path="res://Juego/UI/HUD/HUD.gd" type="Script" id=2]
+[ext_resource path="res://Juego/UI/HUD/ContenedorInformacion.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -50,3 +51,11 @@ stretch_mode = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FadeCanvas"]
 anims/default = SubResource( 1 )
 anims/fade_in = SubResource( 2 )
+
+[node name="InfoZonaRecarga" parent="." instance=ExtResource( 3 )]
+
+[node name="Label" parent="InfoZonaRecarga" index="1"]
+text = "En Zona de Recarga"
+uppercase = true
+
+[editable path="InfoZonaRecarga"]
