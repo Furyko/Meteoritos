@@ -9,7 +9,8 @@
 [ext_resource path="res://Juego/Explosiones/AreaColision.gd" type="Script" id=7]
 [ext_resource path="res://Juego/Naves/EnemigoOrbital.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juego/Estaciones/PosicionesSpawn.gd" type="Script" id=9]
-[ext_resource path="res://Juego/Estaciones/RutaEnemigo.gd" type="Script" id=10]
+[ext_resource path="res://Juego/Estaciones/RutaEnemigo2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Juego/Estaciones/RutaEnemigo.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 22.0
@@ -97,17 +98,13 @@ tracks/1/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[sub_resource type="Curve2D" id=7]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 1, -505, 0, 0, 0, 0, 135, -412, 0, 0, 0, 0, 322, -372, 0, 0, 0, 0, 338, -232, 0, 0, 0, 0, 470, -29, 0, 0, 0, 0, 354, 185, 0, 0, 0, 0, 343, 346, 0, 0, 0, 0, 165, 338, 0, 0, 0, 0, 11, 492, 0, 0, 0, 0, -127, 344, 0, 0, 0, 0, -321, 371, 0, 0, 0, 0, -346, 228, 0, 0, 0, 0, -488, 35, 0, 0, 0, 0, -388, -175, 0, 0, 0, 0, -378, -337, 0, 0, 0, 0, -197, -388, 0, 0, 0, 0, 1, -508 )
-}
-
 [node name="BaseEnemiga" type="Node2D"]
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
 orbital = ExtResource( 8 )
+rutas = [ ExtResource( 11 ), ExtResource( 10 ) ]
 
 [node name="Sprites" type="Node2D" parent="."]
 position = Vector2( -4, 60 )
@@ -174,10 +171,6 @@ position = Vector2( 449, 0 )
 
 [node name="Oeste" type="Position2D" parent="PosicionesSpawn"]
 position = Vector2( -453, 0 )
-
-[node name="RutaEnemigo" type="Path2D" parent="."]
-curve = SubResource( 7 )
-script = ExtResource( 10 )
 
 [node name="TimerSpawnerEnemigos" type="Timer" parent="."]
 
