@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Juego/Estaciones/AreaAtraccion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Estaciones/spaceStation_017.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Juego/Explosiones/AreaColision.gd" type="Script" id=7]
 [ext_resource path="res://Juego/Naves/EnemigoOrbital.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juego/Estaciones/PosicionesSpawn.gd" type="Script" id=9]
+[ext_resource path="res://Juego/Estaciones/RutaEnemigo.gd" type="Script" id=10]
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 22.0
@@ -43,7 +44,7 @@ resource_name = "rotacion_anti_horario"
 length = 5.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprites:rotation_degrees")
+tracks/0/path = NodePath("AreaAtraccion:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -52,10 +53,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 360.0, -360.0 ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AreaAtraccion:modulate")
+tracks/1/path = NodePath(".:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -64,7 +65,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+"values": [ 360.0, -360.0 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -72,7 +73,7 @@ resource_name = "rotacion_horario"
 length = 5.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprites:rotation_degrees")
+tracks/0/path = NodePath("AreaAtraccion:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -81,10 +82,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 360.0 ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AreaAtraccion:modulate")
+tracks/1/path = NodePath(".:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -93,7 +94,12 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1, -505, 0, 0, 0, 0, 135, -412, 0, 0, 0, 0, 322, -372, 0, 0, 0, 0, 338, -232, 0, 0, 0, 0, 470, -29, 0, 0, 0, 0, 354, 185, 0, 0, 0, 0, 343, 346, 0, 0, 0, 0, 165, 338, 0, 0, 0, 0, 11, 492, 0, 0, 0, 0, -127, 344, 0, 0, 0, 0, -321, 371, 0, 0, 0, 0, -346, 228, 0, 0, 0, 0, -488, 35, 0, 0, 0, 0, -388, -175, 0, 0, 0, 0, -378, -337, 0, 0, 0, 0, -197, -388, 0, 0, 0, 0, 1, -508 )
 }
 
 [node name="BaseEnemiga" type="Node2D"]
@@ -104,6 +110,8 @@ __meta__ = {
 orbital = ExtResource( 8 )
 
 [node name="Sprites" type="Node2D" parent="."]
+position = Vector2( -4, 60 )
+rotation = 6.28319
 
 [node name="Sprite" type="Sprite" parent="Sprites"]
 position = Vector2( 151, -99 )
@@ -122,6 +130,7 @@ position = Vector2( 4, -218 )
 texture = ExtResource( 5 )
 
 [node name="AreaColision" type="Area2D" parent="."]
+position = Vector2( -4, 60 )
 collision_layer = 32
 collision_mask = 11
 script = ExtResource( 7 )
@@ -141,7 +150,6 @@ rotation = 1.5708
 shape = SubResource( 6 )
 
 [node name="AreaAtraccion" parent="." instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 1, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/default = SubResource( 1 )
@@ -156,16 +164,23 @@ anims/rotacion_horario = SubResource( 3 )
 script = ExtResource( 9 )
 
 [node name="Norte" type="Position2D" parent="PosicionesSpawn"]
-position = Vector2( 0, -533 )
+position = Vector2( 0, -432 )
 
 [node name="Sur" type="Position2D" parent="PosicionesSpawn"]
-position = Vector2( 0, 336 )
+position = Vector2( 0, 445 )
 
 [node name="Este" type="Position2D" parent="PosicionesSpawn"]
-position = Vector2( 453, 0 )
+position = Vector2( 449, 0 )
 
 [node name="Oeste" type="Position2D" parent="PosicionesSpawn"]
-position = Vector2( -393, 0 )
+position = Vector2( -453, 0 )
+
+[node name="RutaEnemigo" type="Path2D" parent="."]
+curve = SubResource( 7 )
+script = ExtResource( 10 )
+
+[node name="TimerSpawnerEnemigos" type="Timer" parent="."]
 
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="timeout" from="TimerSpawnerEnemigos" to="." method="_on_TimerSpawnerEnemigos_timeout"]
