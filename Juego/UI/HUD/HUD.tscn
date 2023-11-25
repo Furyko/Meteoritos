@@ -58,4 +58,14 @@ anims/fade_in = SubResource( 2 )
 text = "En Zona de Recarga"
 uppercase = true
 
+[node name="InfoMeteoritos" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 1 )
+
+[node name="Label" parent="InfoMeteoritos" index="1"]
+text = "Meteoritos restantes"
+
+[node name="InfoTiempoRestante" parent="." instance=ExtResource( 3 )]
+
 [editable path="InfoZonaRecarga"]
+[editable path="InfoMeteoritos"]
+[editable path="InfoTiempoRestante"]

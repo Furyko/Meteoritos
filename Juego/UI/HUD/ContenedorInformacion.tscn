@@ -96,7 +96,13 @@ anims/ocultar_suavizado = SubResource( 5 )
 margin_right = 310.0
 margin_bottom = 135.0
 custom_fonts/font = SubResource( 1 )
-text = "EN ZONA DE RECARGA"
+text = "Texto placeholder"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="AutoOcultarTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="AutoOcultarTimer" to="." method="_on_AutoOcultarTimer_timeout"]
