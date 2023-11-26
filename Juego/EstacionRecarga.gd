@@ -26,6 +26,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_released("recarga_escudo"):
 		Eventos.emit_signal("ocultar_energia_laser")
+	elif event.is_action_released("recarga_escudo"):
+		Eventos.emit_signal("ocultar_energia_escudo")
 
 ## Custom Methods
 func puede_recargar(event: InputEvent) -> bool:

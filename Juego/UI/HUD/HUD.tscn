@@ -32,6 +32,7 @@ __meta__ = {
 }
 
 [node name="FadeCanvas" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="FadeCanvas"]
 margin_right = 1920.0
@@ -79,7 +80,17 @@ margin_bottom = 1080.0
 text = "Energia Laser
 "
 
+[node name="InfoEscudo" parent="." instance=ExtResource( 4 )]
+margin_left = 1610.0
+margin_top = 810.0
+margin_right = 1920.0
+margin_bottom = 945.0
+
+[node name="Label" parent="InfoEscudo" index="1"]
+text = "Energia Escudo"
+
 [editable path="InfoZonaRecarga"]
 [editable path="InfoMeteoritos"]
 [editable path="InfoTiempoRestante"]
 [editable path="InfoLaser"]
+[editable path="InfoEscudo"]
