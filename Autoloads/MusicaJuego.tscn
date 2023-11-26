@@ -12,3 +12,5 @@ script = ExtResource( 1 )
 [node name="TweenMusicaOn" type="Tween" parent="."]
 
 [node name="TweenMusicaOff" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="TweenMusicaOff" to="." method="_on_TweenMusicaOff_tween_completed"]
