@@ -24,7 +24,7 @@ explosion_meteorito = ExtResource( 7 )
 sector_meteoritos = ExtResource( 9 )
 enemigo_interceptor = ExtResource( 12 )
 rele_masa = ExtResource( 14 )
-tiempo_limite = 21
+tiempo_limite = 180
 
 [node name="HUD" parent="." instance=ExtResource( 15 )]
 
@@ -37,23 +37,29 @@ texture = ExtResource( 8 )
 [node name="TriggersLluviaMeteoritos" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" instance=ExtResource( 5 )]
-position = Vector2( 1454, 526 )
+position = Vector2( 4474, -1135 )
 tipo_peligro = "Meteorito"
 
 [node name="ContenedorEstaciones" type="Node" parent="."]
 
 [node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 11 )]
-position = Vector2( 197, 526 )
+position = Vector2( -3412, 2051 )
+
+[node name="EstacionRecarga2" parent="ContenedorEstaciones" instance=ExtResource( 11 )]
+position = Vector2( -3534, -951 )
 
 [node name="ContenedorBasesEnemigas" type="Node" parent="."]
 
 [node name="BaseEnemiga" parent="ContenedorBasesEnemigas" instance=ExtResource( 13 )]
-position = Vector2( 1920, 1388 )
+position = Vector2( 5816, 2188 )
+
+[node name="BaseEnemiga2" parent="ContenedorBasesEnemigas" instance=ExtResource( 13 )]
+position = Vector2( 1344, 4213 )
 
 [node name="TriggersInterceptores" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersInterceptores" instance=ExtResource( 5 )]
-position = Vector2( 962, 1479 )
+position = Vector2( 11, -1889 )
 tipo_peligro = "Enemigo"
 numero_peligros = 2
 
