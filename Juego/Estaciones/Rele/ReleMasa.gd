@@ -17,8 +17,8 @@ func _on_DetectorPlayer_body_entered(body: Node) -> void:
 	atraer_player(body)
 	
 func _on_Tween_tween_all_completed() -> void:
-	print("Capo, fiera, mastodonte, maquina, hipopotamo, riconeronte, carpincho, bicho raro, hipocampo, etc etc etc")
-
+	Eventos.emit_signal("nivel_completado")
+	
 ## Custom Methods
 func atraer_player(body: Node) -> void:
 	$Tween.interpolate_property(

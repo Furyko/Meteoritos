@@ -12,6 +12,7 @@ export var tiempo_transicion_camara:float = 2.0
 export var tiempo_limite:int = 10
 export var musica_nivel: AudioStream = null
 export var musica_combate: AudioStream = null
+export(String, FILE, "*.tscn") var prox_nivel = ""
 
 ## Onready Attributes
 onready var contenedor_proyectiles:Node
@@ -49,6 +50,7 @@ func conectar_seniales() -> void:
 	Eventos.connect("meteorito_destruido", self, "_on_meteorito_destruido")
 	Eventos.connect("base_destruida", self, "_on_base_destruida")
 	Eventos.connect("spawn_orbital", self, "_on_spawn_orbital")
+	Eventos.connect("nivel_completado", self, "_on_nivel_completado")
 	
 func crear_contenedores() -> void:
 	contenedor_proyectiles = Node.new()
@@ -207,6 +209,11 @@ func _on_base_destruida(_base, pos_partes: Array) -> void:
 		
 func _on_spawn_orbital(enemigo: EnemigoOrbital) -> void:
 	contenedor_enemigos.add_child(enemigo)
+	
+func _on_nivel_completado() -> void:
+	Eventos.emit_signal("nivel_terminado")
+	yield(get_tree().create_timer(1.0), "timeout")
+	get_tree().change_scene(prox_nivel)
 		
 func crear_explosion(
 	posicion: Vector2,
