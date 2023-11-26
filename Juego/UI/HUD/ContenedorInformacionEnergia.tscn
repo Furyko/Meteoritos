@@ -24,10 +24,10 @@ script = ExtResource( 2 )
 [node name="Label" parent="." index="1"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -124.0
-margin_top = 20.0
-margin_right = 124.0
-margin_bottom = 49.0
+margin_left = -155.0
+margin_top = 25.0
+margin_right = 155.0
+margin_bottom = 62.0
 text = "Energia"
 
 [node name="ProgressBar" type="ProgressBar" parent="." index="3"]
@@ -36,9 +36,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -137.0
-margin_top = -75.0
+margin_top = -63.0
 margin_right = 137.0
-margin_bottom = -47.0
+margin_bottom = -35.0
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 value = 50.0
