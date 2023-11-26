@@ -1,6 +1,10 @@
 class_name ReleDeMasa
 extends Node2D
 
+## Methods
+func _ready() -> void:
+	Eventos.emit_signal("minimapa_objeto_creado")
+
 ## Internal Signals
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "spawn":
