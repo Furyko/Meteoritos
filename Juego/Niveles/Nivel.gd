@@ -10,6 +10,8 @@ export var enemigo_interceptor:PackedScene = null
 export var rele_masa:PackedScene = null
 export var tiempo_transicion_camara:float = 2.0
 export var tiempo_limite:int = 10
+export var musica_nivel: AudioStream = null
+export var musica_combate: AudioStream = null
 
 ## Onready Attributes
 onready var contenedor_proyectiles:Node
@@ -35,6 +37,8 @@ func _ready() -> void:
 	player = DatosJuego.get_player_actual()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	actualizador_timer.start()
+	MusicaJuego.set_streams(musica_nivel, musica_combate)
+	MusicaJuego.play_musica_nivel()
 
 ## Metodos Custom
 func conectar_seniales() -> void:
