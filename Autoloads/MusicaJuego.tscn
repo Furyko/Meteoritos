@@ -8,8 +8,10 @@
 script = ExtResource( 1 )
 
 [node name="MusicaNivel" type="AudioStreamPlayer" parent="."]
+volume_db = -9.614
 
 [node name="MusicaCombate" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
 
 [node name="TweenMusicaOn" type="Tween" parent="."]
 
