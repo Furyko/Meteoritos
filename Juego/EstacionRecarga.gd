@@ -24,6 +24,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action("recarga_laser"):
 		nave_player.get_laser().controlar_energia(radio_energia_entregada)
 
+	if event.is_action_released("recarga_escudo"):
+		Eventos.emit_signal("ocultar_energia_laser")
+
 ## Custom Methods
 func puede_recargar(event: InputEvent) -> bool:
 	var hay_input = event.is_action("recarga_escudo") or event.is_action("recarga_laser")

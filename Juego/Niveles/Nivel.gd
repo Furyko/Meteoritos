@@ -194,7 +194,6 @@ func _on_base_destruida(_base, pos_partes: Array) -> void:
 		yield(get_tree().create_timer(0.5), "timeout")
 		
 	numero_bases_enemigas -= 1
-	print(numero_bases_enemigas)
 	if numero_bases_enemigas == 0:
 		crear_rele()
 	
