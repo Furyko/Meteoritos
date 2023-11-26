@@ -108,6 +108,9 @@ func set_esta_visible(hacer_visible: bool) -> void:
 		Tween.EASE_IN_OUT
 	)
 	tween_visibilidad.start()
+	
+func set_esta_activo(esta_activo:bool) -> void:
+	set_esta_visible(esta_activo)
 
 ## Internal Signals
 func _on_TimerVisibilidad_timeout() -> void:
