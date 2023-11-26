@@ -38,10 +38,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Estela and motor sound
 	if event.is_action_pressed("mover_adelante"):
 		estela.set_max_points(estela_maxima)
-		motor_sfx.sonido_on()
 	elif event.is_action_pressed("mover_atras"):
 		estela.set_max_points(0)
-		motor_sfx.sonido_on()
+		
 	if (event.is_action_released("mover_adelante") or event.is_action_released("mover_atras")):
 		motor_sfx.sonido_off()
 	# Shield control
@@ -64,12 +63,15 @@ func esta_input_activo() -> bool:
 func player_input() -> void:
 	if not esta_input_activo():
 		return
+		
 	# Empuje
 	empuje = Vector2.ZERO
 	if Input.is_action_pressed("mover_adelante"):
 		empuje = Vector2(potencia_motor, 0)
+		motor_sfx.sonido_on()
 	elif Input.is_action_pressed("mover_atras"):
 		empuje = Vector2(-potencia_motor, 0)
+		motor_sfx.sonido_on()
 
 	# Rotacion
 	dir_rotacion = 0
