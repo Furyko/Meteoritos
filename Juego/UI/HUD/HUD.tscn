@@ -54,23 +54,25 @@ stretch_mode = 2
 anims/default = SubResource( 1 )
 anims/fade_in = SubResource( 2 )
 
-[node name="InfoZonaRecarga" parent="." instance=ExtResource( 3 )]
+[node name="InfoZonaRecarga" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
 
 [node name="Label" parent="InfoZonaRecarga" index="1"]
 text = "En Zona de Recarga"
 uppercase = true
 
-[node name="InfoMeteoritos" parent="." instance=ExtResource( 3 )]
+[node name="InfoMeteoritos" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 1 )
+margin_left = 310.0
+margin_right = 620.0
 
 [node name="Label" parent="InfoMeteoritos" index="1"]
 text = "Meteoritos restantes"
 
-[node name="InfoTiempoRestante" parent="." instance=ExtResource( 3 )]
+[node name="InfoTiempoRestante" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
 margin_left = 1610.0
 margin_right = 1920.0
 
-[node name="InfoLaser" parent="." instance=ExtResource( 4 )]
+[node name="InfoLaser" parent="." groups=["contenedor_info"] instance=ExtResource( 4 )]
 margin_left = 1610.0
 margin_top = 945.0
 margin_right = 1920.0
@@ -80,7 +82,7 @@ margin_bottom = 1080.0
 text = "Energia Laser
 "
 
-[node name="InfoEscudo" parent="." instance=ExtResource( 4 )]
+[node name="InfoEscudo" parent="." groups=["contenedor_info"] instance=ExtResource( 4 )]
 margin_left = 1610.0
 margin_top = 810.0
 margin_right = 1920.0
